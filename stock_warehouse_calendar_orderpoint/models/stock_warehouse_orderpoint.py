@@ -2,7 +2,7 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl)
 
 
-from dateutil import relativedelta
+from dateutil.relativedelta import relativedelta
 
 from odoo import api, fields, models
 
@@ -14,28 +14,54 @@ class StockWarehouseOrderpoint(models.Model):
         "rule_ids",
         "product_id.seller_ids",
         "product_id.seller_ids.delay",
+        "warehouse_id.calendar_id",
         "warehouse_id.orderpoint_calendar_id",
+        "warehouse_id.orderpoint_on_workday_policy",
     )
     def _compute_lead_days(self):
         super()._compute_lead_days()
-        # Override to use the orderpoint calendar to compute the 'lead_days_date'
+        # Override to use the WH/OP calendars to compute ``lead_days_date``
         for orderpoint in self.with_context(bypass_delay_description=True):
-            op_calendar = orderpoint.warehouse_id.orderpoint_calendar_id
-            if not op_calendar:
-                continue
+            wh = orderpoint.warehouse_id
             if not orderpoint.product_id or not orderpoint.location_id:
                 orderpoint.lead_days_date = False
                 continue
+            # Get the reordering date from the OP calendar
+            reordering_date = orderpoint._get_next_reordering_date()
+            # Get the lead days for this orderpoint
             lead_days = orderpoint._get_lead_days()
-            # Get the next planned date to execute this orderpoint
-            start_date = orderpoint._get_next_reordering_date()
-            lead_days_date = start_date + relativedelta.relativedelta(days=lead_days)
-            # Postpone to the next available workday if needed
-            calendar = orderpoint.warehouse_id.calendar_id
-            if orderpoint.warehouse_id.orderpoint_on_workday and calendar:
-                lead_days_date = calendar.plan_hours(
-                    0, lead_days_date, compute_leaves=True
+            # Get the WH calendar
+            calendar = wh.calendar_id
+            if calendar and lead_days:
+                if wh.orderpoint_on_workday_policy == "skip_all_non_workdays":
+                    # Get the first workday for the WH calendar after consuming the
+                    # ``lead_days`` as workdays (for the WH calendar itself) starting
+                    # from the day after the reordering date itself
+                    lead_days_date = calendar.plan_days(
+                        lead_days,
+                        reordering_date + relativedelta(days=1),
+                        compute_leaves=True,
+                    )
+                else:
+                    # Get the first workday for the WH calendar after consuming the
+                    # ``lead_days`` as solar days
+                    # (This is the behavior for policy ``skip_to_first_workday``, but
+                    # also a fallback in case the policy is not defined)
+                    lead_days_date = calendar.plan_days(
+                        1,
+                        reordering_date + relativedelta(days=lead_days),
+                        compute_leaves=True,
+                    )
+            elif calendar:
+                # Get the first workday for the WH calendar
+                lead_days_date = calendar.plan_days(
+                    1, reordering_date, compute_leaves=True
                 )
+            elif lead_days:
+                # No WH calendar defined => consume ``lead_days`` as solar days
+                lead_days_date = reordering_date + relativedelta(days=lead_days)
+            else:
+                lead_days_date = reordering_date
             orderpoint.lead_days_date = lead_days_date
 
     def _get_lead_days(self):
@@ -45,16 +71,15 @@ class StockWarehouseOrderpoint(models.Model):
 
     def _get_next_reordering_date(self):
         self.ensure_one()
+        now = fields.Datetime.now()
         calendar = self.warehouse_id.orderpoint_calendar_id
-        if calendar:
-            # TODO: should we take into account days off or the reordering
-            # calendar with 'compute_leaves=True' here?
-            return calendar.plan_hours(0, fields.Datetime.now())
-        return False
+        # TODO: should we take into account days off of the reordering calendar with
+        #  'compute_leaves=True' here?
+        return calendar and calendar.plan_hours(0, now) or now
 
     @api.depends("rule_ids", "product_id.seller_ids", "product_id.seller_ids.delay")
     def _compute_json_popover(self):
-        # Overridden to sent the OP ID to 'stock.rule._get_lead_days()'
+        # Overridden to send the OP ID to 'stock.rule._get_lead_days()'
         # method through the context, so we can display the reordering date
         # on the popover forecast widget
         for orderpoint in self:

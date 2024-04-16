@@ -11,7 +11,7 @@ class ResConfigSettings(models.TransientModel):
         related="company_id.orderpoint_calendar_id",
         readonly=False,
     )
-    orderpoint_on_workday = fields.Boolean(
-        related="company_id.orderpoint_on_workday",
+    orderpoint_on_workday_policy = fields.Selection(
+        related="company_id.orderpoint_on_workday_policy",
         readonly=False,
     )
