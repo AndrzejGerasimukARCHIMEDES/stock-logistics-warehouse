@@ -40,10 +40,10 @@ class TestLocation(LocationTrayTypeCase):
                 "selected": [],
                 # we have no stock in this location
                 # fmt: off
-                'cells': [
+                "cells": [
                     [0, 0, 0, 0],
                     [0, 0, 0, 0],
-                ]
+                ],
                 # fmt: on
             },
         )
@@ -84,10 +84,10 @@ class TestLocation(LocationTrayTypeCase):
                 #   [1, 1, 0, 0],
                 #
                 # fmt: off
-                'cells': [
+                "cells": [
                     [1, 1, 0, 0],
                     [0, 0, 0, 1],
-                ]
+                ],
                 # fmt: on
             },
         )
@@ -122,12 +122,12 @@ class TestLocation(LocationTrayTypeCase):
                 # by -1 to have the indexes in the matrix.
                 "selected": [6, 2],
                 # fmt: off
-                'cells': [
+                "cells": [
                     [1, 0, 0, 0, 0, 0, 0, 0],
                     [0, 0, 1, 0, 0, 0, 0, 0],
                     [0, 0, 0, 0, 0, 0, 1, 0],
                     [0, 0, 0, 0, 0, 0, 0, 0],
-                ]
+                ],
                 # fmt: on
             },
         )
@@ -161,7 +161,8 @@ class TestLocation(LocationTrayTypeCase):
         tray_type = self.tray_type_small_32x
         self.tray_location.tray_type_id = tray_type
         self.assertEqual(
-            len(self.tray_location.child_ids), tray_type.cols * tray_type.rows  # 32
+            len(self.tray_location.child_ids),
+            tray_type.cols * tray_type.rows,  # 32
         )
 
     def test_change_tray_type_error_when_not_empty(self):

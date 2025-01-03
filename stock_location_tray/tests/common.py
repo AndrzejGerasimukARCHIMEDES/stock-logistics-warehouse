@@ -35,9 +35,7 @@ class LocationTrayTypeCase(common.SavepointCase):
         cell = self.env["stock.location"].search(
             [("location_id", "=", tray.id), ("posx", "=", x), ("posy", "=", y)]
         )
-        self.assertEqual(
-            len(cell), 1, "Cell x{}y{} not found for {}".format(x, y, tray.name)
-        )
+        self.assertEqual(len(cell), 1, f"Cell x{x}y{y} not found for {tray.name}")
         return cell
 
     def _update_quantity_in_cell(self, cell, product, quantity):

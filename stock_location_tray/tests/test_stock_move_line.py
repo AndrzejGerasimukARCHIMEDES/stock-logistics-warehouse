@@ -44,10 +44,10 @@ class TestStockMoveLine(LocationTrayTypeCase):
             {
                 "selected": [2, 0],
                 # fmt: off
-                'cells': [
+                "cells": [
                     [0, 0, 1, 0],
                     [0, 0, 0, 0],
-                ]
+                ],
                 # fmt: on
             },
         )
@@ -56,12 +56,12 @@ class TestStockMoveLine(LocationTrayTypeCase):
             {
                 "selected": [6, 2],
                 # fmt: off
-                'cells': [
+                "cells": [
                     [0, 0, 0, 0, 0, 0, 0, 0],
                     [0, 0, 0, 0, 0, 0, 0, 0],
                     [0, 0, 0, 0, 0, 0, 0, 0],
                     [0, 0, 0, 0, 0, 0, 0, 0],
-                ]
+                ],
                 # fmt: on
             },
         )

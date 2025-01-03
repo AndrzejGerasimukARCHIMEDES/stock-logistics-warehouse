@@ -231,10 +231,8 @@ class StockLocation(models.Model):
             tray_external = self.env["ir.model.data"].browse(
                 self.env["ir.model.data"]._get_id(module, tray_name)
             )
-            cell_external_id = "{}_x{}y{}".format(
-                tray_name, location.posx, location.posy
-            )
-            cell_xmlid = "{}.{}".format(module, cell_external_id)
+            cell_external_id = f"{tray_name}_x{location.posx}y{location.posy}"
+            cell_xmlid = f"{module}.{cell_external_id}"
             if not has_ref(cell_xmlid):
                 xmlids_to_create.append(
                     {

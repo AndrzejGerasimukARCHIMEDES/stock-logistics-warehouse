@@ -28,12 +28,12 @@ class TestLocationTrayType(LocationTrayTypeCase):
                 "selected": [],  # no selection as this is the "model"
                 # a "full" matrix is generated for display on the UI
                 # fmt: off
-                'cells': [
+                "cells": [
                     [1, 1, 1, 1, 1, 1],
                     [1, 1, 1, 1, 1, 1],
                     [1, 1, 1, 1, 1, 1],
                     [1, 1, 1, 1, 1, 1],
-                ]
+                ],
                 # fmt: on
             },
         )
@@ -50,7 +50,7 @@ class TestLocationTrayType(LocationTrayTypeCase):
         location.tray_type_id = self.used_tray_type
         location = self.used_tray_type.location_ids
         self.assertTrue(location)
-        message = "cannot be archived.\n\n.*{}*".format(location.name)
+        message = f"cannot be archived.\n\n.*{location.name}*"
         # we cannot archive used ones
         with self.assertRaisesRegex(exceptions.ValidationError, message):
             self.used_tray_type.active = False
@@ -64,7 +64,7 @@ class TestLocationTrayType(LocationTrayTypeCase):
         location.tray_type_id = self.used_tray_type
         location = self.used_tray_type.location_ids
         self.assertTrue(location)
-        message = "size cannot be changed.\n\n.*{}*".format(location.name)
+        message = f"size cannot be changed.\n\n.*{location.name}*"
         # we cannot modify size of used ones
         with self.assertRaisesRegex(exceptions.ValidationError, message):
             self.used_tray_type.rows = 10

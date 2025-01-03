@@ -80,8 +80,7 @@ class StockLocationTrayType(models.Model):
                 continue
             if record.location_ids:
                 location_bullets = [
-                    " - {}".format(location.display_name)
-                    for location in record.location_ids
+                    f" - {location.display_name}" for location in record.location_ids
                 ]
                 raise exceptions.ValidationError(
                     _(
@@ -95,8 +94,7 @@ class StockLocationTrayType(models.Model):
         for record in self:
             if record.location_ids:
                 location_bullets = [
-                    " - {}".format(location.display_name)
-                    for location in record.location_ids
+                    f" - {location.display_name}" for location in record.location_ids
                 ]
                 raise exceptions.ValidationError(
                     _(
