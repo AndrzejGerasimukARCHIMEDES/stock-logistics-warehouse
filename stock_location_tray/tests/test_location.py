@@ -1,7 +1,7 @@
 # Copyright 2019 Camptocamp SA
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import exceptions
+from odoo.exceptions import UserError
 
 from .common import LocationTrayTypeCase
 
@@ -54,7 +54,7 @@ class TestLocation(LocationTrayTypeCase):
         self.tray_location.write({"child_ids": [(6, 0, subloc.id)]})
         message = "Location %s has sub-locations, it cannot be converted to a tray."
         with self.assertRaisesRegex(
-            exceptions.UserError, message % (self.tray_location.display_name)
+            UserError, message % (self.tray_location.display_name)
         ):
             self.tray_location.tray_type_id = saved_tray_type
 
@@ -145,9 +145,12 @@ class TestLocation(LocationTrayTypeCase):
 
         # we cannot archive an empty cell or any parent
         location = cell
-        message = "You still have some product in locations"
+        message = self.env._(
+            "You can't disable locations %s because they still contain products.",
+            location.display_name,
+        )
         while location:
-            with self.assertRaisesRegex(exceptions.UserError, message):
+            with self.assertRaisesRegex(UserError, message):
                 location.active = False
 
             # restore state for the next test loop
@@ -170,8 +173,12 @@ class TestLocation(LocationTrayTypeCase):
             self._cell_for(self.tray_location, x=1, y=1), self.product, 1
         )
         tray_type = self.tray_type_small_32x
-        message = "You still have some product in locations"
-        with self.assertRaisesRegex(exceptions.UserError, message):
+        location_name = self.tray_location.child_ids[0].display_name
+        message = self.env._(
+            "You can't disable locations %s because they still contain products.",
+            location_name,
+        )
+        with self.assertRaisesRegex(UserError, message):
             self.tray_location.tray_type_id = tray_type
 
     def test_location_center_pos(self):

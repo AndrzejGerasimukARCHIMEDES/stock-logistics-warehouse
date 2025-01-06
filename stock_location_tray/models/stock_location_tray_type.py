@@ -1,8 +1,7 @@
 # Copyright 2019 Camptocamp SA
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import _, api, exceptions, fields, models
-from odoo.osv import expression
+from odoo import api, exceptions, fields, models
 
 from odoo.addons.base_sparse_field.models.fields import Serialized
 
@@ -10,6 +9,7 @@ from odoo.addons.base_sparse_field.models.fields import Serialized
 class StockLocationTrayType(models.Model):
     _name = "stock.location.tray.type"
     _description = "Stock Location Tray Type"
+    _rec_names_search = ["name", "code"]
 
     name = fields.Char(required=True)
     code = fields.Char(required=True)
@@ -57,37 +57,23 @@ class StockLocationTrayType(models.Model):
             cells = self._generate_cells_matrix(default_state=1)
             record.tray_matrix = {"selected": [], "cells": cells}
 
-    @api.model
-    def _name_search(
-        self, name, args=None, operator="ilike", limit=100, name_get_uid=None
-    ):
-        args = args or []
-        domain = []
-        if name:
-            domain = ["|", ("name", operator, name), ("code", operator, name)]
-
-        return self._search(
-            expression.AND([domain, args]), limit=limit, access_rights_uid=name_get_uid
-        )
-
     def _generate_cells_matrix(self, default_state=0):
         return [[default_state] * self.cols for __ in range(self.rows)]
 
     @api.constrains("active")
     def _location_check_active(self):
-        for record in self:
-            if record.active:
-                continue
-            if record.location_ids:
-                location_bullets = [
-                    f" - {location.display_name}" for location in record.location_ids
-                ]
-                raise exceptions.ValidationError(
-                    _(
-                        "The tray type {} is used by the following locations "
-                        "and cannot be archived:\n\n{}"
-                    ).format(record.name, "\n".join(location_bullets))
+        for record in self.filtered(lambda r: not r.active and r.location_ids):
+            location_bullets = [
+                f" - {location.display_name}" for location in record.location_ids
+            ]
+            raise exceptions.ValidationError(
+                self.env._(
+                    "The tray type %(name)s is used by the following locations "
+                    "and cannot be archived:\n\n%(location_bullets)s",
+                    name=record.name,
+                    location_bullets="\n".join(location_bullets),
                 )
+            )
 
     @api.constrains("rows", "cols")
     def _location_check_rows_cols(self):
@@ -97,10 +83,12 @@ class StockLocationTrayType(models.Model):
                     f" - {location.display_name}" for location in record.location_ids
                 ]
                 raise exceptions.ValidationError(
-                    _(
-                        "The tray type {} is used by the following locations, "
-                        "it's size cannot be changed:\n\n{}"
-                    ).format(record.name, "\n".join(location_bullets))
+                    self.env._(
+                        "The tray type %(name)s is used by the following locations, "
+                        "it's size cannot be changed:\n\n%(location_bullets)s",
+                        name=record.name,
+                        location_bullets="\n".join(location_bullets),
+                    )
                 )
 
     def open_locations(self):

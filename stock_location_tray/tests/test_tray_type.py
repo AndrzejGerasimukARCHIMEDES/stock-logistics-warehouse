@@ -1,7 +1,7 @@
 # Copyright 2019 Camptocamp SA
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import exceptions
+from odoo.exceptions import ValidationError
 
 from .common import LocationTrayTypeCase
 
@@ -39,6 +39,7 @@ class TestLocationTrayType(LocationTrayTypeCase):
         )
         self.assertEqual(len(tray_type.name_search()), 11)
         self.assertEqual(len(tray_type.name_search("Test")), 1)
+        self.assertEqual(len(tray_type.name_search("🐵")), 1)
         self.assertEqual(len(tray_type.name_search("None")), 0)
         action = tray_type.open_locations()
         self.assertEqual(action["res_model"], "stock.location")
@@ -52,7 +53,7 @@ class TestLocationTrayType(LocationTrayTypeCase):
         self.assertTrue(location)
         message = f"cannot be archived.\n\n.*{location.name}*"
         # we cannot archive used ones
-        with self.assertRaisesRegex(exceptions.ValidationError, message):
+        with self.assertRaisesRegex(ValidationError, message):
             self.used_tray_type.active = False
         # we can archive unused ones
         self.unused_tray_type.active = False
@@ -66,9 +67,9 @@ class TestLocationTrayType(LocationTrayTypeCase):
         self.assertTrue(location)
         message = f"size cannot be changed.\n\n.*{location.name}*"
         # we cannot modify size of used ones
-        with self.assertRaisesRegex(exceptions.ValidationError, message):
+        with self.assertRaisesRegex(ValidationError, message):
             self.used_tray_type.rows = 10
-        with self.assertRaisesRegex(exceptions.ValidationError, message):
+        with self.assertRaisesRegex(ValidationError, message):
             self.used_tray_type.cols = 10
         # we can modify size of unused ones
         self.unused_tray_type.rows = 10

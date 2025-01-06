@@ -5,30 +5,26 @@
         <field name="model">stock.move.line</field>
         <field name="inherit_id" ref="stock.view_stock_move_line_operation_tree" />
         <field name="arch" type="xml">
-            <field name="location_id" position="after">
-                <field name="tray_source_matrix" invisible="1" />
-                <button
-                    name="action_show_source_tray"
-                    string="Show Source Tray"
-                    type="object"
-                    icon="fa-th"
-                    attrs="{'invisible': [('tray_source_matrix', '=', {})]}"
-                    invisible="not context.get('show_source_location')"
-                    groups="stock.group_stock_multi_locations"
-                />
-            </field>
-            <field name="location_dest_id" position="after">
-                <field name="tray_dest_matrix" invisible="1" />
+            <xpath expr="//field[@name='location_dest_id'][2]" position="after">
+                <field name="show_tray_destination_location" column_invisible="True" />
                 <button
                     name="action_show_dest_tray"
                     string="Show Destination Tray"
                     type="object"
                     icon="fa-th"
-                    attrs="{'invisible': [('tray_dest_matrix', '=', {})]}"
-                    invisible="not context.get('show_destination_location')"
+                    invisible="not show_tray_destination_location or not tray_dest_matrix"
                     groups="stock.group_stock_multi_locations"
                 />
-            </field>
+                <field name="show_tray_source_location" column_invisible="True" />
+                <button
+                    name="action_show_source_tray"
+                    string="Show Source Tray"
+                    type="object"
+                    icon="fa-th"
+                    invisible="not show_tray_source_location or not tray_source_matrix"
+                    groups="stock.group_stock_multi_locations"
+                />
+            </xpath>
         </field>
     </record>
     <record id="view_stock_move_line_tray" model="ir.ui.view">

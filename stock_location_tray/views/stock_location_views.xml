@@ -7,35 +7,32 @@
         <field name="arch" type="xml">
             <group name="additional_info" position="after">
                 <group string="Tray" name="tray">
-                    <field
-                        name="tray_type_id"
-                        attrs="{'invisible': [('cell_in_tray_type_id', '!=', False)]}"
-                    />
-                    <field
-                        name="cell_name_format"
-                        attrs="{'invisible': [('tray_type_id', '=', False)]}"
-                    />
+                    <field name="tray_type_id" invisible="cell_in_tray_type_id" />
+                    <field name="cell_name_format" invisible="not tray_type_id" />
                     <field
                         name="cell_in_tray_type_id"
-                        attrs="{'invisible': [('cell_in_tray_type_id', '=', False)]}"
+                        invisible="not cell_in_tray_type_id"
                     />
                     <field
                         name="tray_matrix"
                         widget="location_tray_matrix"
-                        attrs="{'invisible': [('tray_type_id', '=', False), ('cell_in_tray_type_id', '=', False)]}"
+                        invisible="not tray_type_id and not cell_in_tray_type_id"
                         options="{'click_action': 'action_tray_matrix_click'}"
                     />
                     <field
                         name="posx"
-                        attrs="{'readonly': [('cell_in_tray_type_id', '!=', False)], 'invisible': ['|', ('cell_in_tray_type_id', '=', False), ('tray_type_id', '=', True)]}"
+                        readonly="cell_in_tray_type_id"
+                        invisible="not cell_in_tray_type_id or tray_type_id"
                     />
                     <field
                         name="posy"
-                        attrs="{'readonly': [('cell_in_tray_type_id', '!=', False)], 'invisible': ['|', ('cell_in_tray_type_id', '=', False), ('tray_type_id', '=', True)]}"
+                        readonly="cell_in_tray_type_id"
+                        invisible="not cell_in_tray_type_id and tray_type_id"
                     />
                     <field
                         name="posz"
-                        attrs="{'readonly': [('cell_in_tray_type_id', '!=', False)], 'invisible': ['|', ('cell_in_tray_type_id', '=', False), ('tray_type_id', '=', True)]}"
+                        readonly="cell_in_tray_type_id"
+                        invisible="not cell_in_tray_type_id and tray_type_id"
                     />
                 </group>
             </group>

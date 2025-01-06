@@ -1,7 +1,7 @@
 # Copyright 2019 Camptocamp SA
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import _, api, models
+from odoo import api, fields, models
 
 from odoo.addons.base_sparse_field.models.fields import Serialized
 
@@ -15,6 +15,10 @@ class StockMoveLine(models.Model):
     tray_dest_matrix = Serialized(
         string="Destination Cell", compute="_compute_tray_matrix"
     )
+    show_tray_source_location = fields.Boolean(compute="_compute_show_tray_location")
+    show_tray_destination_location = fields.Boolean(
+        compute="_compute_show_tray_location"
+    )
 
     @api.depends("location_id", "location_dest_id")
     def _compute_tray_matrix(self):
@@ -22,16 +26,23 @@ class StockMoveLine(models.Model):
             record.tray_source_matrix = record.location_id.tray_matrix
             record.tray_dest_matrix = record.location_dest_id.tray_matrix
 
+    @api.depends("move_id.picking_type_id.code")
+    def _compute_show_tray_location(self):
+        for line in self:
+            picking_type_code = line.move_id.picking_type_id.code
+            line.show_tray_source_location = picking_type_code != "incoming"
+            line.show_tray_destination_location = picking_type_code != "outgoing"
+
     def _action_show_tray(self, location_from):
         assert location_from in ("source", "dest")
         self.ensure_one()
         view = self.env.ref("stock_location_tray.view_stock_move_line_tray")
         context = self.env.context.copy()
         if location_from == "source":
-            name = _("Source Tray")
+            name = self.env._("Source Tray")
             context["show_source_tray"] = True
         else:
-            name = _("Destination Tray")
+            name = self.env._("Destination Tray")
             context["show_dest_tray"] = True
         return {
             "name": name,

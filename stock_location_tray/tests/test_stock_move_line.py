@@ -27,17 +27,17 @@ class TestStockMoveLine(LocationTrayTypeCase):
             {
                 "move_id": move.id,
                 "product_id": move.product_id.id,
-                "qty_done": 1,
+                "quantity": 1,
                 "product_uom_id": move.product_uom.id,
                 "location_id": move.location_id.id,
                 "location_dest_id": move.location_dest_id.id,
             }
         )
-        self.move = move
+        return move
 
     def test_compute_tray_matrix(self):
-        self.create_stock_move()
-        move_line = self.move.move_line_ids[0]
+        move = self.create_stock_move()
+        move_line = move.move_line_ids[0]
         move_line._compute_tray_matrix()
         self.assertEqual(
             move_line.tray_source_matrix,
@@ -67,8 +67,8 @@ class TestStockMoveLine(LocationTrayTypeCase):
         )
 
     def test_action_show_tray(self):
-        self.create_stock_move()
-        move_line = self.move.move_line_ids[0]
+        move = self.create_stock_move()
+        move_line = move.move_line_ids[0]
         view = move_line.action_show_source_tray()
         self.assertEqual(view["name"], "Source Tray")
         self.assertEqual(view["res_id"], move_line.id)

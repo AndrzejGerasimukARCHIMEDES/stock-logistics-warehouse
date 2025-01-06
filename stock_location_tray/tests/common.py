@@ -1,10 +1,10 @@
 # Copyright 2019 Camptocamp SA
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo.tests import common
+from odoo.tests.common import TransactionCase
 
 
-class LocationTrayTypeCase(common.SavepointCase):
+class LocationTrayTypeCase(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
