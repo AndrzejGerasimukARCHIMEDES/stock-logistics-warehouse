@@ -10,18 +10,17 @@
                         <field
                             name="product_domain"
                             widget="domain"
-                            attrs="{'invisible': [('product_selection', '!=', 'domain')]}"
+                            invisible="product_selection != 'domain'"
                             options="{'model': 'product.product'}"
                         />
                     </group>
                 </group>
             </xpath>
             <field name="product_ids" position="attributes">
-                <attribute name="attrs" operation="update">
-                   {'invisible': [('product_selection', 'in', ['all', 'category', 'one', 'domain'])]}
+                <attribute name="invisible">
+                    product_selection in ['all', 'category', 'one', 'domain']
                 </attribute>
             </field>
-
         </field>
     </record>
 </odoo>
