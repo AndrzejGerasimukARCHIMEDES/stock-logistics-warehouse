@@ -5,7 +5,7 @@
 
 {
     "name": "Extended Inventory Preparation Filters",
-    "version": "16.0.1.1.0",
+    "version": "17.0.1.0.0",
     "depends": ["stock", "stock_inventory", "base_view_inheritance_extension"],
     "author": "AvanzOSC," "Tecnativa," "Odoo Community Association (OCA)",
     "category": "Inventory, Logistic, Storage",

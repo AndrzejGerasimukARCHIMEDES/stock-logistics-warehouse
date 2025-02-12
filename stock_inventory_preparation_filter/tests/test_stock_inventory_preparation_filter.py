@@ -8,8 +8,9 @@ from odoo.tests import common
 
 @common.tagged("-at_install", "post_install")
 class TestStockInventoryPreparationFilterCategories(common.TransactionCase):
-    def setUp(self):
-        super().setUp()
+    @classmethod
+    def setUpClass(self):
+        super().setUpClass()
         self.inventory_model = self.env["stock.inventory"]
         self.location = self.env.ref("stock.stock_location_stock")
         self.Product = self.env["product.product"]
