@@ -42,7 +42,7 @@ class TestStockPickingProductAssortment(TransactionCase):
             {
                 "name": "Test Assortment 1",
                 "model_id": "product.product",
-                "domain": [],
+                "domain": [("id", "=", 0)],
                 "is_assortment": True,
                 "partner_ids": [(4, self.partner_1.id)],
                 "whitelist_product_ids": [(4, self.product_1.product_variant_id.id)],
