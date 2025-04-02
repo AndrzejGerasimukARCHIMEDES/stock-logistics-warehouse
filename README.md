@@ -40,6 +40,7 @@ addon | version | maintainers | summary
 [stock_packaging_calculator](stock_packaging_calculator/) | 18.0.2.0.0 |  | Compute product quantity to pick by packaging
 [stock_picking_completion_info](stock_picking_completion_info/) | 18.0.1.0.0 |  | Display on current document completion information according to next operations
 [stock_picking_product_assortment](stock_picking_product_assortment/) | 18.0.1.0.0 | [![CarlosRoca13](https://github.com/CarlosRoca13.png?size=30px)](https://github.com/CarlosRoca13) | Stock Picking Product Assortment
+[stock_picking_show_linked](stock_picking_show_linked/) | 18.0.1.0.0 |  | This addon allows to easily access related pickings (in the case of chained routes) through a button in the parent picking view.
 [stock_picking_supplier_ref](stock_picking_supplier_ref/) | 18.0.1.0.0 |  | Adds a supplier reference field inside supplier's pickings and allows search for this reference.
 [stock_picking_volume](stock_picking_volume/) | 18.0.1.0.0 | [![lmignon](https://github.com/lmignon.png?size=30px)](https://github.com/lmignon) | Compute volume information on stock moves and pickings
 [stock_putaway_product_template](stock_putaway_product_template/) | 18.0.1.0.0 | [![kevinkhao](https://github.com/kevinkhao.png?size=30px)](https://github.com/kevinkhao) [![sebastienbeau](https://github.com/sebastienbeau.png?size=30px)](https://github.com/sebastienbeau) | Add product template in putaway strategies from the product view
