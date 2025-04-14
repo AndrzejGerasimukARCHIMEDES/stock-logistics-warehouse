@@ -39,6 +39,7 @@ setuptools.setup(
         'odoo-addon-stock_lot_multi_image>=16.0dev,<16.1dev',
         'odoo-addon-stock_move_auto_assign>=16.0dev,<16.1dev',
         'odoo-addon-stock_move_auto_assign_auto_release>=16.0dev,<16.1dev',
+        'odoo-addon-stock_move_auto_assign_auto_release_exclude_location>=16.0dev,<16.1dev',
         'odoo-addon-stock_move_common_dest>=16.0dev,<16.1dev',
         'odoo-addon-stock_move_location>=16.0dev,<16.1dev',
         'odoo-addon-stock_move_packaging_qty>=16.0dev,<16.1dev',
