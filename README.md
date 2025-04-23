@@ -128,6 +128,7 @@ addon | version | maintainers | summary
 [stock_vertical_lift_server_env](stock_vertical_lift_server_env/) | 14.0.1.0.0 |  | Server Environment layer for Vertical Lift
 [stock_vertical_lift_storage_type](stock_vertical_lift_storage_type/) | 14.0.1.1.0 |  | Compatibility layer for storage types on vertical lifts
 [stock_warehouse_calendar](stock_warehouse_calendar/) | 14.0.1.0.1 | [![JordiBForgeFlow](https://github.com/JordiBForgeFlow.png?size=30px)](https://github.com/JordiBForgeFlow) | Adds a calendar to the Warehouse
+[stock_warehouse_calendar_orderpoint](stock_warehouse_calendar_orderpoint/) | 14.0.1.1.0 | [![sebalix](https://github.com/sebalix.png?size=30px)](https://github.com/sebalix) | Adds a calendar to the Warehouse for reordering rules
 
 [//]: # (end addons)
 
