@@ -82,5 +82,8 @@ class TestStockStorageCategoryCapacity(TransactionCase):
 
         self.assertEqual(
             stor_capacity.display_name,
-            "Super Storage Category x 1.0 (Product: Product Test - Package: Super Pallet)",
+            (
+                "Super Storage Category x 1.0 "
+                "(Product: Product Test - Package: Super Pallet)"
+            ),
         )
