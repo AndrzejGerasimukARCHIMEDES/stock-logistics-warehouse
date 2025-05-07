@@ -21,12 +21,12 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:stock_inventory_discrepancy.view_stock_config_settings
 msgid ""
 "<span class=\"fa fa-lg fa-building-o\" title=\"Values set here are company-"
-"specific.\" aria-label=\"Values set here are company-specific.\" groups=\"base."
-"group_multi_company\" role=\"img\"/>"
+"specific.\" aria-label=\"Values set here are company-specific.\" "
+"groups=\"base.group_multi_company\" role=\"img\"/>"
 msgstr ""
-"<span class=\"fa fa-lg fa-building-o\" title=\"Los valores establecidos aquí son "
-"específicos de la empresa.\" aria-label=\"Los valores establecidos aquí son "
-"específicos de la empresa.\" role=\"img\"/> "
+"<span class=\"fa fa-lg fa-building-o\" title=\"Los valores establecidos aquí "
+"son específicos de la empresa.\" aria-label=\"Los valores establecidos aquí "
+"son específicos de la empresa.\" role=\"img\"/> "
 
 #. module: stock_inventory_discrepancy
 #: model_terms:ir.ui.view,arch_db:stock_inventory_discrepancy.confirm_discrepancy_wizard
@@ -38,9 +38,11 @@ msgstr "Aplicar"
 #: model:ir.model.fields,help:stock_inventory_discrepancy.field_res_config_settings__inventory_discrepancy_enable
 #: model_terms:ir.ui.view,arch_db:stock_inventory_discrepancy.view_stock_config_settings
 msgid ""
-"Block validation of the inventory adjustment if discrepancy exceeds the threshold."
+"Block validation of the inventory adjustment if discrepancy exceeds the "
+"threshold."
 msgstr ""
-"Bloquea la validación del ajuste de inventario si la discrepancia excede el límite."
+"Bloquea la validación del ajuste de inventario si la discrepancia excede el "
+"límite."
 
 #. module: stock_inventory_discrepancy
 #: model_terms:ir.ui.view,arch_db:stock_inventory_discrepancy.confirm_discrepancy_wizard
@@ -109,7 +111,6 @@ msgstr "ID (identificación)"
 
 #. module: stock_inventory_discrepancy
 #: model_terms:ir.ui.view,arch_db:stock_inventory_discrepancy.view_location_form
-#: model_terms:ir.ui.view,arch_db:stock_inventory_discrepancy.view_warehouse
 msgid "Inventory Discrepancy"
 msgstr "Discrepancias de Inventario"
 
@@ -152,18 +153,20 @@ msgid ""
 "Maximum Discrepancy Rate allowed for any product when doing an Inventory "
 "Adjustment. Threshold defined in involved Location has preference."
 msgstr ""
-"Tasa de Discrepancia Máxima permitida para cualquier producto al hacer un Ajuste "
-"de Inventario. El umbral definido en la Ubicación implicada tiene preferencia."
+"Tasa de Discrepancia Máxima permitida para cualquier producto al hacer un "
+"Ajuste de Inventario. El umbral definido en la Ubicación implicada tiene "
+"preferencia."
 
 #. module: stock_inventory_discrepancy
 #: model:ir.model.fields,help:stock_inventory_discrepancy.field_stock_location__discrepancy_threshold
 msgid ""
 "Maximum Discrepancy Rate allowed for any product when doing an Inventory "
-"Adjustment. Thresholds defined in Locations have preference over Warehouse's ones."
+"Adjustment. Thresholds defined in Locations have preference over Warehouse's "
+"ones."
 msgstr ""
-"Tasa de Discrepancia Máxima permitida para cualquier producto al hacer un Ajuste "
-"de Inventario. Los umbrales definidos en Ubicaciones tienen preferencia sobre los "
-"del Almacén."
+"Tasa de Discrepancia Máxima permitida para cualquier producto al hacer un "
+"Ajuste de Inventario. Los umbrales definidos en Ubicaciones tienen "
+"preferencia sobre los del Almacén."
 
 #. module: stock_inventory_discrepancy
 #. odoo-python
@@ -181,7 +184,8 @@ msgstr "Por encima del límite"
 #: model:ir.model.fields,help:stock_inventory_discrepancy.field_stock_location__propagate_discrepancy_threshold
 msgid "Propagate Maximum Discrepancy Rate Threshold to child locations"
 msgstr ""
-"Propagar el umbral de tasa de discrepancia máxima a las ubicaciones secundarias"
+"Propagar el umbral de tasa de discrepancia máxima a las ubicaciones "
+"secundarias"
 
 #. module: stock_inventory_discrepancy
 #: model:ir.model.fields,field_description:stock_inventory_discrepancy.field_stock_location__propagate_discrepancy_threshold
@@ -196,7 +200,8 @@ msgstr "Cuantos"
 #. module: stock_inventory_discrepancy
 #: model:ir.model.fields,help:stock_inventory_discrepancy.field_stock_quant__discrepancy_percent
 msgid "The discrepancy expressed in percent with theoretical quantity as basis"
-msgstr "La discrepancia expresada en porcentaje con la cantidad teórica como base"
+msgstr ""
+"La discrepancia expresada en porcentaje con la cantidad teórica como base"
 
 #. module: stock_inventory_discrepancy
 #: model_terms:ir.ui.view,arch_db:stock_inventory_discrepancy.confirm_discrepancy_wizard
@@ -249,8 +254,9 @@ msgid ""
 "You cannot apply inventory adjustments if there are products that exceed the "
 "discrepancy threshold. Only users with rights to apply them can proceed."
 msgstr ""
-"No se pueden aplicar ajustes de inventario si hay productos que superan el umbral "
-"de discrepancia. Sólo los usuarios con derechos para aplicarlos pueden proceder."
+"No se pueden aplicar ajustes de inventario si hay productos que superan el "
+"umbral de discrepancia. Sólo los usuarios con derechos para aplicarlos "
+"pueden proceder."
 
 #. module: stock_inventory_discrepancy
 #: model_terms:ir.ui.view,arch_db:stock_inventory_discrepancy.confirm_discrepancy_wizard
@@ -263,4 +269,5 @@ msgstr ""
 "No se puede confirmar el ajuste de inventario,\n"
 "                    los siguientes productos han superado el umbral de "
 "discrepancia.\n"
-"                    Sólo los usuarios con permisos para aplicarlos pueden proceder."
+"                    Sólo los usuarios con permisos para aplicarlos pueden "
+"proceder."
