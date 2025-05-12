@@ -15,7 +15,7 @@ class TestStockInventoryCountZero(TransactionCase):
         cls.product_template = cls.env["product.template"].create(
             {
                 "name": "test inventory count to zero",
-                "type": "product",
+                "is_storable": True,
             }
         )
         StockQuant = cls.env["stock.quant"]
