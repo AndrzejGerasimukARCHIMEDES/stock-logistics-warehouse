@@ -74,7 +74,7 @@ addon | version | maintainers | summary
 [stock_request_submit](stock_request_submit/) | 15.0.1.0.0 |  | Add submit state on Stock Requests
 [stock_request_tier_validation](stock_request_tier_validation/) | 15.0.1.0.1 | [![LoisRForgeFlow](https://github.com/LoisRForgeFlow.png?size=30px)](https://github.com/LoisRForgeFlow) [![etobella](https://github.com/etobella.png?size=30px)](https://github.com/etobella) | Extends the functionality of Stock Requests to support a tier validation process.
 [stock_reserve](stock_reserve/) | 15.0.1.2.1 |  | Stock reservations on products
-[stock_reserve_rule](stock_reserve_rule/) | 15.0.1.0.1 |  | Configure reservation rules by location
+[stock_reserve_rule](stock_reserve_rule/) | 15.0.1.1.0 |  | Configure reservation rules by location
 [stock_search_supplierinfo_code](stock_search_supplierinfo_code/) | 15.0.1.0.0 |  | Allows to search for picking from supplierinfo code
 [stock_secondary_unit](stock_secondary_unit/) | 15.0.2.3.1 |  | Get product quantities in a secondary unit
 [stock_valuation_layer_accounting_date](stock_valuation_layer_accounting_date/) | 15.0.1.0.0 |  | Stock Valuation Layer Accounting Date
