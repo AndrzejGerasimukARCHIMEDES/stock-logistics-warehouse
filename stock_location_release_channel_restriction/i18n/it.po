@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2025-04-15 18:24+0000\n"
+"PO-Revision-Date: 2025-06-04 10:26+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -34,7 +34,7 @@ msgstr "Per la restrizione canale ubicazione destinazione"
 #. module: stock_location_release_channel_restriction
 #: model:ir.model.fields,field_description:stock_location_release_channel_restriction.field_stock_move_line__for_restriction_incoming_location_channel_ids
 msgid "For Restriction Incoming Location Channel"
-msgstr ""
+msgstr "Per limitazione canale ubicazione in entrata"
 
 #. module: stock_location_release_channel_restriction
 #: model:ir.model.fields,help:stock_location_release_channel_restriction.field_stock_location__parent_release_channel_restriction
@@ -118,6 +118,8 @@ msgid ""
 "Technical field in order to retrieve the release channel of pending incoming "
 "moves on destination location."
 msgstr ""
+"Campo tecnico per recuperare il canale di rilascio dei movimenti in ingresso "
+"in sospeso nell'ubicazione di destinazione."
 
 #. module: stock_location_release_channel_restriction
 #: model:ir.model.fields,help:stock_location_release_channel_restriction.field_stock_move_line__for_restriction_destination_location_channel_id
@@ -145,6 +147,10 @@ msgid ""
 "%(release_channel_name)s release channel and/or pending incoming moves for "
 "%(incoming_channel_names)s"
 msgstr ""
+"Non è possibile spostare i prodotti in fase di prelievo (%(picking_name)s) "
+"in %(location_name)s. Quella ubicazione ha già movimenti in uscita in "
+"sospeso per il canale di rilascio di %(release_channel_name)s e/o movimenti "
+"in entrata in sospeso per %(incoming_channel_name)s"
 
 #, python-format
 #~ msgid ""
