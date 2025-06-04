@@ -35,19 +35,19 @@ addon | version | maintainers | summary
 [account_move_line_stock_info](account_move_line_stock_info/) | 13.0.1.2.0 |  | Account Move Line Stock Info
 [procurement_auto_create_group](procurement_auto_create_group/) | 13.0.1.3.0 |  | Allows to configure the system to propose automatically new procurement groups during the procurement run.
 [product_quantity_update_force_inventory](product_quantity_update_force_inventory/) | 13.0.1.0.0 |  | Product Quantity Update Force Inventory
-[sale_automatic_workflow_reserve_sale_stock](sale_automatic_workflow_reserve_sale_stock/) | 13.0.1.0.0 | [![CarlosRoca13](https://github.com/CarlosRoca13.png?size=30px)](https://github.com/CarlosRoca13) | Sale Automatic Workflow: Reserve Sale stock
+[sale_automatic_workflow_reserve_sale_stock](sale_automatic_workflow_reserve_sale_stock/) | 13.0.1.0.0 | <a href='https://github.com/CarlosRoca13'><img src='https://github.com/CarlosRoca13.png' width='32' height='32' style='border-radius:50%;' alt='CarlosRoca13'/></a> | Sale Automatic Workflow: Reserve Sale stock
 [sale_stock_available_info_popup](sale_stock_available_info_popup/) | 13.0.1.0.3 |  | Adds an 'Available to promise' quantity to the popover shown in sale order line that display stock info of the product
-[scrap_reason_code](scrap_reason_code/) | 13.0.1.1.1 | [![bodedra](https://github.com/bodedra.png?size=30px)](https://github.com/bodedra) | Reason code for scrapping
+[scrap_reason_code](scrap_reason_code/) | 13.0.1.1.1 | <a href='https://github.com/bodedra'><img src='https://github.com/bodedra.png' width='32' height='32' style='border-radius:50%;' alt='bodedra'/></a> | Reason code for scrapping
 [stock_account_change_qty_reason](stock_account_change_qty_reason/) | 13.0.1.0.0 |  | Stock Account Change Quantity Reason
 [stock_account_inventory_discrepancy](stock_account_inventory_discrepancy/) | 13.0.1.0.0 |  | Adds the capability to show the value discrepancy of every line in an inventory and to block the inventory validation when the discrepancy is over a user defined threshold.
-[stock_archive_constraint](stock_archive_constraint/) | 13.0.1.0.1 | [![victoralmau](https://github.com/victoralmau.png?size=30px)](https://github.com/victoralmau) | Stock archive constraint
+[stock_archive_constraint](stock_archive_constraint/) | 13.0.1.0.1 | <a href='https://github.com/victoralmau'><img src='https://github.com/victoralmau.png' width='32' height='32' style='border-radius:50%;' alt='victoralmau'/></a> | Stock archive constraint
 [stock_available](stock_available/) | 13.0.1.0.2 |  | Stock available to promise
 [stock_available_immediately](stock_available_immediately/) | 13.0.1.0.0 |  | Ignore planned receptions in quantity available to promise
 [stock_available_mrp](stock_available_mrp/) | 13.0.2.0.0 |  | Consider the production potential is available to promise
-[stock_available_unreserved](stock_available_unreserved/) | 13.0.1.0.2 | [![LoisRForgeFlow](https://github.com/LoisRForgeFlow.png?size=30px)](https://github.com/LoisRForgeFlow) | Quantity of stock available for immediate use
+[stock_available_unreserved](stock_available_unreserved/) | 13.0.1.0.2 | <a href='https://github.com/LoisRForgeFlow'><img src='https://github.com/LoisRForgeFlow.png' width='32' height='32' style='border-radius:50%;' alt='LoisRForgeFlow'/></a> | Quantity of stock available for immediate use
 [stock_change_qty_reason](stock_change_qty_reason/) | 13.0.2.0.0 |  | Stock Quantity Change Reason
 [stock_cubiscan](stock_cubiscan/) | 13.0.1.1.1 |  | Implement inteface with Cubiscan devices for packaging
-[stock_cycle_count](stock_cycle_count/) | 13.0.1.2.1 | [![LoisRForgeFlow](https://github.com/LoisRForgeFlow.png?size=30px)](https://github.com/LoisRForgeFlow) | Adds the capability to schedule cycle counts in a warehouse through different rules defined by the user.
+[stock_cycle_count](stock_cycle_count/) | 13.0.1.2.1 | <a href='https://github.com/LoisRForgeFlow'><img src='https://github.com/LoisRForgeFlow.png' width='32' height='32' style='border-radius:50%;' alt='LoisRForgeFlow'/></a> | Adds the capability to schedule cycle counts in a warehouse through different rules defined by the user.
 [stock_demand_estimate](stock_demand_estimate/) | 13.0.1.2.0 |  | Allows to create demand estimates.
 [stock_demand_estimate_matrix](stock_demand_estimate_matrix/) | 13.0.1.2.0 |  | Allows to create demand estimates.
 [stock_helper](stock_helper/) | 13.0.1.1.0 |  | Add methods shared between various stock modules
@@ -56,7 +56,7 @@ addon | version | maintainers | summary
 [stock_inventory_discrepancy](stock_inventory_discrepancy/) | 13.0.1.1.0 |  | Adds the capability to show the discrepancy of every line in an inventory and to block the inventory validation when the discrepancy is over a user defined threshold.
 [stock_inventory_exclude_sublocation](stock_inventory_exclude_sublocation/) | 13.0.1.0.1 |  | Allow to perform inventories of a location without including its child locations.
 [stock_inventory_include_exhausted](stock_inventory_include_exhausted/) | 13.0.1.2.0 |  | It includes the option for adding products exhausted on the inventories.
-[stock_inventory_justification](stock_inventory_justification/) | 13.0.1.0.0 | [![rousseldenis](https://github.com/rousseldenis.png?size=30px)](https://github.com/rousseldenis) | This module allows to set justification on inventories
+[stock_inventory_justification](stock_inventory_justification/) | 13.0.1.0.0 | <a href='https://github.com/rousseldenis'><img src='https://github.com/rousseldenis.png' width='32' height='32' style='border-radius:50%;' alt='rousseldenis'/></a> | This module allows to set justification on inventories
 [stock_inventory_line_open](stock_inventory_line_open/) | 13.0.1.0.0 |  | Open inventory lines on validated inventory adjustments
 [stock_inventory_lockdown](stock_inventory_lockdown/) | 13.0.1.0.2 |  | Lock down stock locations during inventories.
 [stock_inventory_preparation_filter](stock_inventory_preparation_filter/) | 13.0.1.0.1 |  | More filters for inventory adjustments
@@ -68,9 +68,9 @@ addon | version | maintainers | summary
 [stock_location_route_description](stock_location_route_description/) | 13.0.1.0.1 |  | Add description field on stock routes.
 [stock_location_tray](stock_location_tray/) | 13.0.1.0.2 |  | Organize a location as a matrix of cells
 [stock_location_zone](stock_location_zone/) | 13.0.1.0.0 |  | Classify locations with zones.
-[stock_lot_filter_available](stock_lot_filter_available/) | 13.0.2.0.0 | [![CarlosRoca13](https://github.com/CarlosRoca13.png?size=30px)](https://github.com/CarlosRoca13) | Allow to filter lots by available on stock
-[stock_measuring_device](stock_measuring_device/) | 13.0.1.1.0 | [![gurneyalex](https://github.com/gurneyalex.png?size=30px)](https://github.com/gurneyalex) | Implement a common interface for measuring and weighing devices
-[stock_measuring_device_zippcube](stock_measuring_device_zippcube/) | 13.0.1.1.0 | [![gurneyalex](https://github.com/gurneyalex.png?size=30px)](https://github.com/gurneyalex) | Implement interface with Bosche Zippcube devicesfor packaging measurement
+[stock_lot_filter_available](stock_lot_filter_available/) | 13.0.2.0.0 | <a href='https://github.com/CarlosRoca13'><img src='https://github.com/CarlosRoca13.png' width='32' height='32' style='border-radius:50%;' alt='CarlosRoca13'/></a> | Allow to filter lots by available on stock
+[stock_measuring_device](stock_measuring_device/) | 13.0.1.1.0 | <a href='https://github.com/gurneyalex'><img src='https://github.com/gurneyalex.png' width='32' height='32' style='border-radius:50%;' alt='gurneyalex'/></a> | Implement a common interface for measuring and weighing devices
+[stock_measuring_device_zippcube](stock_measuring_device_zippcube/) | 13.0.1.1.0 | <a href='https://github.com/gurneyalex'><img src='https://github.com/gurneyalex.png' width='32' height='32' style='border-radius:50%;' alt='gurneyalex'/></a> | Implement interface with Bosche Zippcube devicesfor packaging measurement
 [stock_move_auto_assign](stock_move_auto_assign/) | 13.0.1.1.0 |  | Try to reserve moves when goods enter in a location
 [stock_move_common_dest](stock_move_common_dest/) | 13.0.1.1.0 |  | Adds field for common destination moves
 [stock_move_location](stock_move_location/) | 13.0.1.2.0 |  | This module allows to move all stock in a stock location to an other one.
@@ -92,10 +92,10 @@ addon | version | maintainers | summary
 [stock_picking_procure_method](stock_picking_procure_method/) | 13.0.1.0.0 |  | Allows to force the procurement method from the picking
 [stock_picking_show_linked](stock_picking_show_linked/) | 13.0.1.0.2 |  | This addon allows to easily access related pickings (in the case of chained routes) through a button in the parent picking view.
 [stock_product_qty_by_packaging](stock_product_qty_by_packaging/) | 13.0.1.1.0 |  | Compute product quantity to pick by packaging
-[stock_production_lot_quantity_tree](stock_production_lot_quantity_tree/) | 13.0.1.0.0 | [![rousseldenis](https://github.com/rousseldenis.png?size=30px)](https://github.com/rousseldenis) | Allows to display product quantity field on production lot tree view
-[stock_pull_list](stock_pull_list/) | 13.0.1.0.0 | [![LoisRForgeFlow](https://github.com/LoisRForgeFlow.png?size=30px)](https://github.com/LoisRForgeFlow) | The pull list checks the stock situation and calculates needed quantities.
-[stock_putaway_product_template](stock_putaway_product_template/) | 13.0.1.1.0 | [![kevinkhao](https://github.com/kevinkhao.png?size=30px)](https://github.com/kevinkhao) [![sebastienbeau](https://github.com/sebastienbeau.png?size=30px)](https://github.com/sebastienbeau) | Add product template in putaway strategies from the product view
-[stock_quant_expiration_date_tree](stock_quant_expiration_date_tree/) | 13.0.1.0.0 | [![Manuel Calero](https://github.com/Manuel Calero.png?size=30px)](https://github.com/Manuel Calero) | Allows to display expirations dates on stock quant tree view
+[stock_production_lot_quantity_tree](stock_production_lot_quantity_tree/) | 13.0.1.0.0 | <a href='https://github.com/rousseldenis'><img src='https://github.com/rousseldenis.png' width='32' height='32' style='border-radius:50%;' alt='rousseldenis'/></a> | Allows to display product quantity field on production lot tree view
+[stock_pull_list](stock_pull_list/) | 13.0.1.0.0 | <a href='https://github.com/LoisRForgeFlow'><img src='https://github.com/LoisRForgeFlow.png' width='32' height='32' style='border-radius:50%;' alt='LoisRForgeFlow'/></a> | The pull list checks the stock situation and calculates needed quantities.
+[stock_putaway_product_template](stock_putaway_product_template/) | 13.0.1.1.0 | <a href='https://github.com/kevinkhao'><img src='https://github.com/kevinkhao.png' width='32' height='32' style='border-radius:50%;' alt='kevinkhao'/></a> <a href='https://github.com/sebastienbeau'><img src='https://github.com/sebastienbeau.png' width='32' height='32' style='border-radius:50%;' alt='sebastienbeau'/></a> | Add product template in putaway strategies from the product view
+[stock_quant_expiration_date_tree](stock_quant_expiration_date_tree/) | 13.0.1.0.0 | <a href='https://github.com/Manuel Calero'><img src='https://github.com/Manuel Calero.png' width='32' height='32' style='border-radius:50%;' alt='Manuel Calero'/></a> | Allows to display expirations dates on stock quant tree view
 [stock_quant_manual_assign](stock_quant_manual_assign/) | 13.0.1.2.0 |  | Stock - Manual Quant Assignment
 [stock_quant_reservation_info](stock_quant_reservation_info/) | 13.0.1.0.0 |  | Allows to see the reserved info of Products
 [stock_quant_reservation_info_mrp](stock_quant_reservation_info_mrp/) | 13.0.1.0.0 |  | Allows to see the manufacturing order related to the reserved info of Products
@@ -103,10 +103,10 @@ addon | version | maintainers | summary
 [stock_removal_location_by_priority](stock_removal_location_by_priority/) | 13.0.1.0.0 |  | Establish a removal priority on stock locations.
 [stock_request](stock_request/) | 13.0.1.7.3 |  | Internal request for stock
 [stock_request_analytic](stock_request_analytic/) | 13.0.1.0.0 |  | Internal request for stock
-[stock_request_direction](stock_request_direction/) | 13.0.1.0.1 | [![max3903](https://github.com/max3903.png?size=30px)](https://github.com/max3903) | From or to your warehouse?
+[stock_request_direction](stock_request_direction/) | 13.0.1.0.1 | <a href='https://github.com/max3903'><img src='https://github.com/max3903.png' width='32' height='32' style='border-radius:50%;' alt='max3903'/></a> | From or to your warehouse?
 [stock_request_kanban](stock_request_kanban/) | 13.0.1.0.1 |  | Adds a stock request order, and takes stock requests as lines
 [stock_request_mrp](stock_request_mrp/) | 13.0.1.0.0 |  | Manufacturing request for stock
-[stock_request_picking_type](stock_request_picking_type/) | 13.0.1.1.0 | [![max3903](https://github.com/max3903.png?size=30px)](https://github.com/max3903) | Add Stock Requests to the Inventory App
+[stock_request_picking_type](stock_request_picking_type/) | 13.0.1.1.0 | <a href='https://github.com/max3903'><img src='https://github.com/max3903.png' width='32' height='32' style='border-radius:50%;' alt='max3903'/></a> | Add Stock Requests to the Inventory App
 [stock_request_purchase](stock_request_purchase/) | 13.0.1.0.1 |  | Internal request for stock
 [stock_request_submit](stock_request_submit/) | 13.0.1.0.0 |  | Add submit state on Stock Requests
 [stock_request_tier_validation](stock_request_tier_validation/) | 13.0.1.0.0 |  | Extends the functionality of Stock Requests to support a tier validation process.
@@ -122,7 +122,7 @@ addon | version | maintainers | summary
 [stock_vertical_lift_qty_by_packaging](stock_vertical_lift_qty_by_packaging/) | 13.0.1.0.0 |  | Glue module for `stock_product_qty_by_packaging` and `stock_vertical_lift`.
 [stock_vertical_lift_server_env](stock_vertical_lift_server_env/) | 13.0.1.0.0 |  | Server Environment layer for Vertical Lift
 [stock_vertical_lift_storage_type](stock_vertical_lift_storage_type/) | 13.0.1.0.0 |  | Compatibility layer for storage types on vertical lifts
-[stock_warehouse_calendar](stock_warehouse_calendar/) | 13.0.1.0.1 | [![JordiBForgeFlow](https://github.com/JordiBForgeFlow.png?size=30px)](https://github.com/JordiBForgeFlow) | Adds a calendar to the Warehouse
+[stock_warehouse_calendar](stock_warehouse_calendar/) | 13.0.1.0.1 | <a href='https://github.com/JordiBForgeFlow'><img src='https://github.com/JordiBForgeFlow.png' width='32' height='32' style='border-radius:50%;' alt='JordiBForgeFlow'/></a> | Adds a calendar to the Warehouse
 [stock_warehouse_orderpoint_stock_info](stock_warehouse_orderpoint_stock_info/) | 13.0.1.0.0 |  | Stock Warehouse Orderpoint Stock Info
 [stock_warehouse_orderpoint_stock_info_unreserved](stock_warehouse_orderpoint_stock_info_unreserved/) | 13.0.1.0.0 |  | Stock Warehouse Orderpoint Stock Info Unreserved
 
