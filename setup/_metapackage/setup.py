@@ -78,6 +78,7 @@ setuptools.setup(
         'odoo14-addon-stock_picking_cancel_confirm',
         'odoo14-addon-stock_picking_procure_method',
         'odoo14-addon-stock_picking_show_linked',
+        'odoo14-addon-stock_picking_type_user_restriction',
         'odoo14-addon-stock_picking_volume',
         'odoo14-addon-stock_picking_volume_packaging',
         'odoo14-addon-stock_procurement_group_hook',
