@@ -23,7 +23,7 @@ class TestStockInventory(TransactionCase):
         )
         self.product2 = self.env["product.product"].create(
             {
-                "name": "Product 1 test",
+                "name": "Product 2 test",
                 "type": "product",
                 "categ_id": self.product_categ.id,
             }
@@ -588,4 +588,78 @@ class TestStockInventory(TransactionCase):
                 lambda q: q.product_id == self.product2
             ).current_inventory_id,
             inventory2,
+        )
+
+    def test_13_multiple_inventories_different_categories_different_location(self):
+        self.product_categ3 = self.env["product.category"].create(
+            {"name": "Test Categ2"}
+        )
+        self.product_categ4 = self.env["product.category"].create(
+            {"name": "Test Categ3"}
+        )
+
+        self.product3 = self.env["product.product"].create(
+            {
+                "name": "Product 3 test",
+                "type": "product",
+                "categ_id": self.product_categ3.id,
+            }
+        )
+        self.product4 = self.env["product.product"].create(
+            {
+                "name": "Product 4 test",
+                "type": "product",
+                "categ_id": self.product_categ4.id,
+            }
+        )
+
+        self.quant5 = self.quant_model.sudo().create(
+            {
+                "product_id": self.product3.id,
+                "quantity": 100.0,
+                "location_id": self.location1.id,
+            }
+        )
+
+        self.quant6 = self.quant_model.sudo().create(
+            {
+                "product_id": self.product4.id,
+                "quantity": 100.0,
+                "location_id": self.location2.id,
+            }
+        )
+
+        inventory3 = self.inventory_model.create(
+            {
+                "name": "Inventory3 for Product3",
+                "product_ids": [(6, 0, [self.product3.id])],
+                "location_ids": [(6, 0, [self.location1.id])],
+                "product_selection": "category",
+                "category_id": self.product_categ3.id,
+            }
+        )
+        inventory4 = self.inventory_model.create(
+            {
+                "name": "Inventory4 for Product4",
+                "product_ids": [(6, 0, [self.product4.id])],
+                "location_ids": [(6, 0, [self.location2.id])],
+                "product_selection": "category",
+                "category_id": self.product_categ4.id,
+            }
+        )
+        inventory3.action_state_to_in_progress()
+        inventory4.action_state_to_in_progress()
+        self.assertEqual(inventory3.state, "in_progress")
+        self.assertEqual(inventory4.state, "in_progress")
+        self.assertEqual(
+            inventory3.stock_quant_ids.filtered(
+                lambda q: q.product_id == self.product3
+            ).current_inventory_id,
+            inventory3,
+        )
+        self.assertEqual(
+            inventory4.stock_quant_ids.filtered(
+                lambda q: q.product_id == self.product4
+            ).current_inventory_id,
+            inventory4,
         )
