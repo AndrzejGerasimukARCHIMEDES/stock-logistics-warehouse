@@ -1,4 +1,4 @@
-from odoo import _, api, fields, models
+from odoo import Command, _, api, fields, models
 from odoo.exceptions import UserError, ValidationError
 from odoo.osv import expression
 
@@ -53,7 +53,7 @@ class InventoryAdjustmentsGroup(models.Model):
         "stock.location",
         string="Locations",
         domain="[('usage', '=', 'internal'), "
-        "'|', ('company_id', '=', company_id), ('company_id', '=', False)]",
+               "'|', ('company_id', '=', company_id), ('company_id', '=', False)]",
         readonly=True,
     )
 
@@ -121,7 +121,7 @@ class InventoryAdjustmentsGroup(models.Model):
 
     exclude_sublocation = fields.Boolean(
         help="If enabled, it will only take into account "
-        "the locations selected, and not their children."
+             "the locations selected, and not their children."
     )
 
     responsible_id = fields.Many2one(
@@ -154,10 +154,10 @@ class InventoryAdjustmentsGroup(models.Model):
                     lambda quant: quant.to_do
                 ).mapped("product_id")
                 record.products_under_review_ids = (
-                    [(6, 0, products.ids)] if products else [(5, 0, 0)]
+                    [Command.set(products.ids)] if products else [Command.clear()]
                 )
             else:
-                record.products_under_review_ids = [(5, 0, 0)]
+                record.products_under_review_ids = [Command.clear()]
 
     @api.depends("stock_quant_ids")
     def _compute_count_stock_quants(self):
@@ -214,15 +214,15 @@ class InventoryAdjustmentsGroup(models.Model):
         return self.env["stock.quant"].search(domain)
 
     def _get_base_domain(self, locations):
-        return (
-            [
-                ("location_id", "in", locations.mapped("id")),
-            ]
-            if self.exclude_sublocation
-            else [
-                ("location_id", "child_of", locations.child_internal_location_ids.ids),
-            ]
-        )
+        domain = [("to_do", "=", False)]
+
+        if self.exclude_sublocation:
+            domain.append(("location_id", "in", locations.mapped("id")))
+        else:
+            domain.append(
+                ("location_id", "child_of", locations.child_internal_location_ids.ids))
+
+        return domain
 
     def _get_domain_all_quants(self, base_domain):
         return base_domain
@@ -274,7 +274,7 @@ class InventoryAdjustmentsGroup(models.Model):
             rec.stock_quant_ids = rec._get_quants(rec.location_ids)
 
     def _get_quant_joined_names(self, quants, field):
-        return ", ".join(quants.mapped(f"{field}.display_name"))
+        return ",\n ".join(quants.mapped(f"{field}.display_name"))
 
     def action_state_to_in_progress(self):
         self.ensure_one()
@@ -291,14 +291,27 @@ class InventoryAdjustmentsGroup(models.Model):
             search_filter.append(("product_id", "in", self.product_ids.ids))
             error_field = "product_id"
             error_message = _(
-                "There are active adjustments for the requested products: %(names)s. "
+                "There are active adjustments for the requested products: \n %(names)s. \n\n"
+                "Blocking adjustments: %(blocking_names)s"
+            )
+        elif self.category_id:
+            search_filter.extend(
+                [
+                    "|",
+                    ("product_id.categ_id", "in", self.category_id.ids),
+                    ("product_id.categ_id", "in", self.category_id.child_id.ids),
+                ]
+            )
+            error_field = "product_id.categ_id"
+            error_message = _(
+                "There are active adjustments for the requested categories: \n %(names)s. \n\n"
                 "Blocking adjustments: %(blocking_names)s"
             )
         else:
             error_field = "location_id"
             error_message = _(
                 "There's already an Adjustment in Process "
-                "using one requested Location: %(names)s. "
+                "using one requested Location: \n %(names)s. \n\n"
                 "Blocking adjustments: %(blocking_names)s"
             )
 
@@ -314,22 +327,25 @@ class InventoryAdjustmentsGroup(models.Model):
                     error_message % {"names": names, "blocking_names": blocking_names}
                 )
 
-        quants = self._get_quants(self.location_ids)
-        self.write(
-            {
-                "state": "in_progress",
-                "stock_quant_ids": [(6, 0, quants.ids)],
-            }
-        )
-        quants.write(
-            {
-                "to_do": True,
-                "user_id": self.responsible_id,
-                "inventory_date": self.date,
-                "current_inventory_id": self.id,
-            }
-        )
-        return
+        quant_ids = self._get_quants(self.location_ids)
+        if quant_ids:
+            self.write(
+                {
+                    "state": "in_progress",
+                    "stock_quant_ids": [Command.set(quant_ids.ids)],
+                }
+            )
+            quant_ids.write(
+                {
+                    "to_do": True,
+                    "user_id": self.responsible_id,
+                    "inventory_date": self.date,
+                    "current_inventory_id": self.id,
+                }
+            )
+            return
+        else:
+            raise UserError(_("There are no quantities to adjust."))
 
     def action_state_to_done(self):
         self.ensure_one()
@@ -431,10 +447,10 @@ class InventoryAdjustmentsGroup(models.Model):
                 ]
                 if rec.product_ids:
                     product_condition = [
-                        ("state", "=", "in_progress"),
-                        ("id", "!=", rec.id),
-                        ("product_ids", "in", rec.product_ids.ids),
-                    ] + location_condition
+                                            ("state", "=", "in_progress"),
+                                            ("id", "!=", rec.id),
+                                            ("product_ids", "in", rec.product_ids.ids),
+                                        ] + location_condition
                     inventories = self.search(product_condition)
                 else:
                     inventories = self.search(
