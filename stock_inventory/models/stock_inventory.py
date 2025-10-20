@@ -214,16 +214,15 @@ class InventoryAdjustmentsGroup(models.Model):
         return self.env["stock.quant"].search(domain)
 
     def _get_base_domain(self, locations):
-        domain = [("to_do", "=", False)]
-
-        if self.exclude_sublocation:
-            domain.append(("location_id", "in", locations.mapped("id")))
-        else:
-            domain.append(
-                ("location_id", "child_of", locations.child_internal_location_ids.ids)
-            )
-
-        return domain
+        return (
+            [
+                ("location_id", "in", locations.mapped("id")),
+            ]
+            if self.exclude_sublocation
+            else [
+                ("location_id", "child_of", locations.child_internal_location_ids.ids),
+            ]
+        )
 
     def _get_domain_all_quants(self, base_domain):
         return base_domain
